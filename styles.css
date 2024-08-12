@@ -19,6 +19,18 @@
     font-style: italic;
 }
 
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 :root {
     --spacing-500: 40px;
     --spacing-400: 32px;
@@ -83,7 +95,6 @@ body {
             text-decoration: 1px underline var(--primary-color-700);
             vertical-align: top;   
             text-underline-offset:2px;         
-            /* text-decoration-thickness: ; */
         }
 
         p.tp-5 {
@@ -109,11 +120,9 @@ body {
             flex-direction: column;
             padding-top: var(--spacing-300);
             padding-bottom: var(--spacing-300);
-            /* gap: 24px; gap between field divs */
-            /* gap: 1px; */
             gap: var(--spacing-300);
 
-            div.mortgage-amount, div.mortgage-term, div.interest-rate {
+            div.mortgage-amount, div.mortgage-term, div.interest-rate, div.mortgage-type {
                 display: flex;
                 flex-direction: column;
                 gap: var(--spacing-150);
@@ -125,13 +134,22 @@ body {
             }
 
             input, div.radio-input-box {
-
                 border: 1px solid var(--primary-color-500);
                 opacity: 100%;
             }
 
+            input:hover, div.radio-input-box:hover {
+                border: 1px solid var(--primary-color-900);
+                opacity: 100%;
+            }
+
+            input.text-box:focus-visible, div.radio-input-box:focus-visible {
+                border: 1px solid var(--secondary-color) !important;
+                opacity: 100% !important;
+            }
+
             input.text-box, div.radio-input-box {
-                width: 100%;
+                width: auto;
                 height: 40px;
                 border-radius: 4px;
             }
@@ -139,20 +157,28 @@ body {
             div.mortgage-type {
                 display: flex;
                 flex-direction: column;
-                gap: 8px;
-
-                /* p {
-                    margin-top: 24px;
-                    margin-bottom: 0;
-                } */
+                gap: var(--spacing-100);
 
                 div.radio-input-box {
                     display: flex;
                     flex-direction: row;
                     align-content: center;
-                    padding-left: 12px;
-                    align-items: center;
-    
+                    padding-left: var(--spacing-200);
+                    padding-right: var(--spacing-200);                     align-items: center;
+                    gap: var(--spacing-200);
+
+                    input {
+                        width: 20px;
+                        height: 20px;
+                    }
+
+                    label {
+                        color: var(--primary-color-900);
+                        font-weight: bold;
+                        font-size: 18px;
+                        line-height: 125%;
+                        letter-spacing: 0;
+                    }
                 }
             }
 
