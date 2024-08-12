@@ -132,25 +132,89 @@ body {
                     margin: 0;
                 }
             }
+            .input-box {
+                display: flex;
+                align-items: center;
+                max-width: 300px;
+                border: 2px solid var(--primary-color-500);
+                opacity: 100%;
+                border-radius: 4px;
+                /* padding-left: 0.5rem; */
+                overflow: hidden;
+                font-family: sans-serif;
+            }
+              
+            .input-box .prefix {
+ 
+                /* width: auto; */
+  
+            }
 
-            input, div.radio-input-box {
+            .input {
+                color: var(--primary-color-700);
+                background-color: var(--primary-color-100);
+            }
+
+            .prefix, .suffix {
+                height: 100%;
+                padding: 0.8rem;
+                color: var(--primary-color-700);
+                background-color: var(--primary-color-100);
+                line-height: 125%;
+                font-size: 18px;
+                letter-spacing: 0;
+                font-weight: bold;
+                font-style: normal;
+            }
+              
+            .input-box input {
+                flex-grow: 1;
+                font-size: 14px;
+                background: #fff;
+                border: none;
+                outline: none;
+                padding: 0.5rem;
+            }
+              
+            .input-box:focus-within {
+                border-color: #777;
+            }
+
+            .input-box:hover {
+                border: 2px solid var(--primary-color-900);
+                opacity: 100%;
+            }
+
+            .input-box:focus-visible, .input-box:active, .input-box:focus-within {
+                border: 2px solid var(--secondary-color);
+                opacity: 100%;
+            }
+
+            .input-box:active {
+                border: 2px solid var(--secondary-color);
+                opacity: 100%;
+            }
+
+            /* input, div.radio-input-box {
                 border: 1px solid var(--primary-color-500);
                 opacity: 100%;
-            }
+            } */
 
-            input:hover, div.radio-input-box:hover {
+            /* input:hover, div.radio-input-box:hover {
                 border: 1px solid var(--primary-color-900);
                 opacity: 100%;
-            }
+            } */
 
-            input.text-box:focus-visible, div.radio-input-box:focus-visible {
+            /* input.text-box:focus-visible, div.radio-input-box:focus-visible {
                 border: 1px solid var(--secondary-color) !important;
                 opacity: 100% !important;
-            }
+            } */
+
+        
 
             input.text-box, div.radio-input-box {
-                width: auto;
-                height: 40px;
+                width: 100%;
+                /* height: auto; */
                 border-radius: 4px;
             }
 

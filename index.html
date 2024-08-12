@@ -18,29 +18,50 @@
     </div>
 
     <div class="form-fields">
+
+      <div class="input-box">
+        <span class="prefix">+30</span>
+        <input type="tel" placeholder="210 123 4567"/>
+      </div>
+
       <div class="mortgage-amount">
         <p class="tp-4">Mortgage Amount</p>
-        <input class="text-box" type="number" name="amount-field"/>
+
+        <div class="input-box">
+          <span class="prefix">£</span>
+          <input class="text-box" type="number" name="amount-field"/>
+        </div>
+
       </div>
 
       <div class="mortgage-term">
         <p class="tp-4">Mortgage Term</p>
-        <input class="text-box" type="number" name="term-field"/>
+
+        <div class="input-box"> 
+          <input class="text-box" type="number" name="term-field"/>
+          <span class="suffix">years</span>
+        </div>
       </div>
 
       <div class="interest-rate">
         <p class="tp-4">Interest Rate</p>
-        <input class="text-box" type="number" name="interest-field" />
+
+        <div class="input-box">
+          <input class="text-box" type="number" name="interest-field" />
+          <span class="suffix">%</span>
+        </div>
       </div>
+
+
 
       <div class="mortgage-type">
         <p class="tp-4">Mortgage Type</p>
 
-        <div class="radio-input-box">
+        <div class="input-box radio-input-box">
           <input type="radio" name="repayment" id="repayment" value="Repayment"/>
           <label for="repayment">Repayment</label>
         </div>
-        
+
         <div class="radio-input-box">
           <input type="radio" name="interest" id="interest" value="Interest Only"/>
           <label for="interest">Interest Only</label>

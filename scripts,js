@@ -1,0 +1,15 @@
+// setCurrency = (string location)  => {
+//     switch (currency) {
+//         case "United States" :
+//         return "$"
+//         break;
+
+//         case "United Kingdom" :
+//         return "£"
+//         break;
+//     }
+// }
+
+setCurrency = (bool useAmericanCurrency)  => {
+    return useAmericanCurrency ? "$" : "£";
+}
