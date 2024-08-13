@@ -46,7 +46,16 @@ input[type=number] {
     --primary-color-300: #9ABED5;
     --primary-color-100: #E4F4FD;
     --secondary-color: #D8DB2F;
+    --secondary-color-hsl: hsla(61, 70%, 52%, 0.15);
+    --secondary-color-hsl-fifty-percent: hsla(61, 70%, 52%, 0.5);
     /*colors in hover state are 50% opacity reg color*/
+    /* --text-preset-3 {
+        font-size: 18px;
+        line-height: 125%;
+        letter-spacing: -1px;
+        font-weight: bold;
+        font-style: normal;
+    } */
 }
 
 body {
@@ -132,7 +141,7 @@ body {
                     margin: 0;
                 }
             }
-            .input-box {
+            .input-box, .radio-input-box {
                 display: flex;
                 align-items: center;
                 max-width: 300px;
@@ -141,13 +150,6 @@ body {
                 border-radius: 4px;
                 /* padding-left: 0.5rem; */
                 overflow: hidden;
-                font-family: sans-serif;
-            }
-              
-            .input-box .prefix {
- 
-                /* width: auto; */
-  
             }
 
             .input {
@@ -174,10 +176,12 @@ body {
                 border: none;
                 outline: none;
                 padding: 0.5rem;
-            }
-              
-            .input-box:focus-within {
-                border-color: #777;
+                font-size: 18px;
+                line-height: 125%;
+                letter-spacing: 1px;
+                font-weight: bold;
+                font-style: normal;
+                color: var(--primary-color-900);
             }
 
             .input-box:hover {
@@ -188,6 +192,23 @@ body {
             .input-box:focus-visible, .input-box:active, .input-box:focus-within {
                 border: 2px solid var(--secondary-color);
                 opacity: 100%;
+
+                /* change  prefix and suffix bg and text color on focus/active state*/
+                .prefix, .suffix {
+                    color: var(--primary-color-900);
+                    background-color: var(--secondary-color);
+                }
+            }
+
+            .input-box:invalid {
+                border: 2px solid var(--error-color);
+                opacity: 100%;
+
+                /* change  prefix and suffix bg and text color on focus/active state*/
+                .prefix, .suffix {
+                    color: var(--bg-color);
+                    background-color: var(--error-color);
+                }
             }
 
             .input-box:active {
@@ -214,7 +235,6 @@ body {
 
             input.text-box, div.radio-input-box {
                 width: 100%;
-                /* height: auto; */
                 border-radius: 4px;
             }
 
@@ -227,13 +247,22 @@ body {
                     display: flex;
                     flex-direction: row;
                     align-content: center;
-                    padding-left: var(--spacing-200);
-                    padding-right: var(--spacing-200);                     align-items: center;
+                    align-items: center;
                     gap: var(--spacing-200);
+                    /* padding-left: var(--spacing-150); */
+                    /* padding: var(--spacing-100) 0 var(--spacing-150) var(--spacing-150); */
+                    height: 100%;
+                    padding: var(--spacing-100) !important;
+                    accent-color: green;
+
 
                     input {
                         width: 20px;
                         height: 20px;
+                        line-height: 125%;
+                        margin: 0;
+                        accent-color: var(--secondary-color);
+
                     }
 
                     label {
@@ -244,12 +273,55 @@ body {
                         letter-spacing: 0;
                     }
                 }
+
+                .radio-input-box:active, .radio-input-box:focus-visible, div.radio-input-box:focus-within {
+                    border: 2px solid var(--secondary-color);
+                    background-color: var(--secondary-color-hsl);
+                    color: var(--primary-color-900);
+                }
+
+                .radio-input-box:hover {
+                    border: 2px solid var(--secondary-color);
+                }
+    
             }
 
 
 
-            input.radio-btn {
+            /* button.calculate-btn { */
+                /* background-color: var(--secondary-color);
+                color: var(--primary-color-900);
+                border: 1px solid var(--secondary-color);
+                border-radius: 999px;
+                /* padding: var(--spacing-300) var(--spacing-500); */
+                /* height: auto;
+                width: 100%; */
+    
 
+
+      
+            /* } */
+
+            div.btn-div {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: var(--secondary-color);
+                color: var(--primary-color-900);
+                border: 1px solid var(--secondary-color);
+                border-radius: 999px;
+                height: auto;
+                width: 100%;
+
+                p {
+                    letter-spacing: 0;
+                }
+            }
+
+            div.btn-div:hover {
+                cursor: pointer;
+                background-color: var(--secondary-color-hsl-fifty-percent);
+                border: 1px solid var(--secondary-color-hsl-fifty-percent);
             }
         }
 
