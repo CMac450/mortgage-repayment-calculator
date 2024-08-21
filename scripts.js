@@ -140,7 +140,7 @@ calculateInterestOnlyRepayment = (i, a, t) => {
     const annualRate = i / 100;
     const numMonthsTotal = t * 12;
 
-    const monthlyPaymentAmount = ((annualRate * a) / numMonthsTotal);
+    const monthlyPaymentAmount = ((a * annualRate) / 12);
     const repaymentOverTerm = (monthlyPaymentAmount * numMonthsTotal).toFixed(2);
 
     console.log(`monthlyPaymentAmount1: ${monthlyPaymentAmount}`);
