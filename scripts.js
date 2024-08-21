@@ -28,6 +28,8 @@ document.addEventListener('DOMContentLoaded', function () {
     let term = document.getElementById('termInput').value;
     let interestRate = document.getElementById('interestInput').value;
 
+    const formElement = document.getElementById('form');
+
     // Add event listener to amount input and set error state
     // and message when value is empty
     const amountElementID = document.getElementById('amountInput');
@@ -112,6 +114,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const calcButtonElementID = document.getElementById('calcBtn');
     calcButtonElementID.addEventListener('click', function () {
         
+        console.log(`form validity: ${formElement.checkValidity()}`);
+
+        // Only calculate values and change results pane
+        // if the form is valid
+       if (formElement.checkValidity()) {
         if(isInterestOnlyType) {
             calculateInterestOnlyRepayment(interestRate, amount, term);
         }
@@ -123,6 +130,7 @@ document.addEventListener('DOMContentLoaded', function () {
         //show results panels
         resultsEmptyID.style.display = 'none';
         resultsCompleteID.style.display = 'flex';
+       }
 
     });
 
@@ -132,6 +140,10 @@ document.addEventListener('DOMContentLoaded', function () {
         amountElementID.value = "";
         termElementID.value = "";
         interestElementID.value = "";
+
+        //reset results panel
+        resultsEmptyID.style.display = 'flex';
+        resultsCompleteID.style.display = 'none';
     });
 });
 

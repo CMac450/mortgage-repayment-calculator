@@ -63,7 +63,7 @@ body {
     margin: 0;
     font-family: 'Plus Jakarta Sans';
 
-    div.form {
+    form {
         padding: var(--spacing-400) var(--spacing-300);
 
         /*text preset 1 */
