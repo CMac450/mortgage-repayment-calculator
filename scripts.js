@@ -14,75 +14,177 @@
 //     return useAmericanCurrency ? "$" : "£";
 // }
 
+document.addEventListener('DOMContentLoaded', function () {
 
-const amountElementID = document.getElementById('amountInput');
-const amountErrorElementID = document.getElementById('amountError');
+    //set display values for results
+    const resultsCompleteID = document.getElementById('resultsComplete');
+    const resultsEmptyID = document.getElementById('resultsEmpty');
 
-const termElementID = document.getElementById('termInput');
-const termErrorElementID = document.getElementById('termError');
+    resultsEmptyID.style.display = 'flex';
+    resultsCompleteID.style.display = 'none';
 
-const interestElementID = document.getElementById('interestInput');
-const interestErrorElementID = document.getElementById('interestError');
-
-
-handleInput = (elementIDString) => {
-    
     let inputBoxElementID;
-    let inputValue;
+    let amount = document.getElementById('amountInput').value;
+    let term = document.getElementById('termInput').value;
+    let interestRate = document.getElementById('interestInput').value;
 
-    switch(elementIDString) {
-        case 'amountInput':
-            inputValue = amountElementID.value;
-            inputBoxElementID = document.getElementById('amountInputBox');
+    // Add event listener to amount input and set error state
+    // and message when value is empty
+    const amountElementID = document.getElementById('amountInput');
+    const amountErrorElementID = document.getElementById('amountError');
+    amountElementID.addEventListener('input', function () {
+        inputBoxElementID = document.getElementById('amountInputBox');
+        
+        if (amountElementID.value.trim() === '') {
+            amountErrorElementID.style.display = 'inline';
+            inputBoxElementID.classList.add('invalid')
+        } else {
+            amountErrorElementID.style.display = 'none';
+            inputBoxElementID.classList.remove('invalid')
+        }
 
-            if(inputValue == null || inputValue == "") {
-                // show error text if input is empty
-                amountErrorElementID.style.display = 'block'
+        amount = amountElementID.value;
+    });
 
-                // add error class to input-box if it's empty
-                inputBoxElementID.classList.add('invalid')
+    // Add event listener to term input and set error state
+    // and message when value is empty
+    const termElementID = document.getElementById('termInput');
+    const termErrorElementID = document.getElementById('termError');
+    termElementID.addEventListener('input', function () {
+        inputBoxElementID = document.getElementById('termInputBox');
+        
+        if (termElementID.value.trim() === '') {
+            termErrorElementID.style.display = 'inline';
+            inputBoxElementID.classList.add('invalid')
+        } else {
+            termErrorElementID.style.display = 'none';
+            inputBoxElementID.classList.remove('invalid')
+        }
+
+        term = termElementID.value;
+    });
+
+    // Add event listener to interest input and set error state
+    // and message when value is empty
+    const interestElementID = document.getElementById('interestInput');
+    const interestErrorElementID = document.getElementById('interestError');
+    interestElementID.addEventListener('input', function () {
+        inputBoxElementID = document.getElementById('interestInputBox');
+        
+        if (interestElementID.value.trim() === '') {
+            interestErrorElementID.style.display = 'inline';
+            inputBoxElementID.classList.add('invalid')
+        } else {
+            interestErrorElementID.style.display = 'none';
+            inputBoxElementID.classList.remove('invalid')
+        }
+
+        interestRate = interestElementID.value;
+    });
+
+    // Make isRepayment type the automatic radio button selection
+    let isRepaymentType = true;
+    let isInterestOnlyType;
+
+    const radioBtns = document.querySelectorAll('input[name="typeRadioBtn"]');
+    // Loop through radio buttons to get selected choice
+    // and set boolean values
+    radioBtns.forEach(radio => {
+        radio.addEventListener('change', function () {
+
+            if (this.value == 'option1') {
+                isRepaymentType = true;
             } else {
-                amountErrorElementID.style.display = 'none'
-
-                // remove error class from input-box if it's NOT empty
-                inputBoxElementID.classList.remove('invalid')
+                isRepaymentType = false;
             }
-        break;
 
-        case 'termInput':
-            inputValue = termElementID.value;
-            inputBoxElementID = document.getElementById('termInputBox');
-
-            if(inputValue == null || inputValue == "") {
-                // show error text if input is empty
-                termErrorElementID.style.display = 'block'
-
-                // add error class to input-box if it's empty
-                inputBoxElementID.classList.add('invalid')
+            if(this.value == 'option2'){
+                isInterestOnlyType = true;
             } else {
-                termErrorElementID.style.display = 'none'
-
-                // remove error class from input-box if it's NOT empty
-                inputBoxElementID.classList.remove('invalid')
+                isInterestOnlyType = false;
             }
-        break;
 
-        case 'interestInput':
-            inputValue = interestElementID.value;
-            inputBoxElementID = document.getElementById('interestInputBox');
+        })
+    })
 
-            if(inputValue == null || inputValue == "") {
-                // show error text if input is empty
-                interestErrorElementID.style.display = 'block'
+    // Add event listener to 'Calculate Repayments' button
+    // and call different calculation methods based on the mortgage type selection
+    const calcButtonElementID = document.getElementById('calcBtn');
+    calcButtonElementID.addEventListener('click', function () {
+        
+        if(isInterestOnlyType) {
+            calculateInterestOnlyRepayment(interestRate, amount, term);
+        }
+        
+        if(isRepaymentType) {
+            calculateRepayment(interestRate, amount, term);
+        }
 
-                // add error class to input-box if it's empty
-                inputBoxElementID.classList.add('invalid')
-            } else {
-                interestErrorElementID.style.display = 'none'
+        //show results panels
+        resultsEmptyID.style.display = 'none';
+        resultsCompleteID.style.display = 'flex';
 
-                // remove error class from input-box if it's NOT empty
-                inputBoxElementID.classList.remove('invalid')
-            }
-        break;
-    }
+    });
+
+    // Clear inputs 
+    const clearAllElementID = document.getElementById('clearAll');
+    clearAllElementID.addEventListener('click', function () {
+        amountElementID.value = "";
+        termElementID.value = "";
+        interestElementID.value = "";
+    });
+});
+
+// Calculation for interest only repayments
+calculateInterestOnlyRepayment = (i, a, t) => {
+    const annualRate = i / 100;
+    const numMonthsTotal = t * 12;
+
+    const monthlyPaymentAmount = ((annualRate * a) / numMonthsTotal);
+    const repaymentOverTerm = (monthlyPaymentAmount * numMonthsTotal).toFixed(2);
+
+    console.log(`monthlyPaymentAmount1: ${monthlyPaymentAmount}`);
+    console.log(`repaymentOverTerm1: ${repaymentOverTerm}`);
+
+    // Format the price above to USD using the locale, style, and currency.
+    let USDollar = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+    });
+
+    //show text
+    const monthlyPaymentElementID = document.getElementById('monthlyPayment');
+    const totalPaymentElementID = document.getElementById('totalPayment');
+
+    monthlyPaymentElementID.textContent = USDollar.format(monthlyPaymentAmount);
+    totalPaymentElementID.textContent = USDollar.format(repaymentOverTerm);
+
 }
+
+// Calculation based off of Amortization formula
+calculateRepayment = (i, a, t) => {
+    const annualRate = i / 100;
+    const numMonthsTotal = t * 12;
+    const monthlyRate = (annualRate / 12);
+
+    const monthlyPaymentAmount = (a * (monthlyRate * (1 + monthlyRate) ** numMonthsTotal) / (((1 + monthlyRate) ** numMonthsTotal) -1));
+    const repaymentOverTerm = (monthlyPaymentAmount * numMonthsTotal);
+
+    
+    console.log(`monthlyPaymentAmount2: ${monthlyPaymentAmount}`);
+    console.log(`repaymentOverTerm2: ${repaymentOverTerm}`);
+
+    // Format the price above to USD using the locale, style, and currency.
+    let USDollar = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+    });
+
+    //show text
+    const monthlyPaymentElementID = document.getElementById('monthlyPayment');
+    const totalPaymentElementID = document.getElementById('totalPayment');
+
+    monthlyPaymentElementID.textContent = USDollar.format(monthlyPaymentAmount);
+    totalPaymentElementID.textContent = USDollar.format(repaymentOverTerm);
+
+};

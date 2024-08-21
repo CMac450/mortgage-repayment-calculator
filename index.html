@@ -14,7 +14,7 @@
   <div class="form">
     <div class="form-title-bar">
       <p class="tp-2">Mortgage Calculator</p>
-      <a class="tp-4">Clear All</a>
+      <a class="tp-4" id="clearAll">Clear All</a>
     </div>
 
     <div class="form-fields">
@@ -22,8 +22,8 @@
         <p class="tp-4">Mortgage Amount</p>
 
         <div class="input-box" id="amountInputBox">
-          <span class="prefix">£</span>
-          <input class="text-box" id="amountInput" type="number" name="amount-field" onchange="handleInput('amountInput')"/>
+          <span class="prefix">$</span>
+          <input class="text-box" id="amountInput" type="number" name="amount-field" />
         </div>
         <p id="amountError" class="error" style="display: none;">Error text</p>
 
@@ -33,7 +33,7 @@
         <p class="tp-4">Mortgage Term</p>
 
         <div class="input-box" id="termInputBox"> 
-          <input class="text-box" id="termInput" type="number" name="term-field"  onchange="handleInput('termInput')"/>
+          <input class="text-box" id="termInput" type="number" name="term-field" />
           <span class="suffix">years</span>
         </div>
         <p id="termError" class="error" style="display: none;">Error text</p>
@@ -44,7 +44,7 @@
         <p class="tp-4">Interest Rate</p>
 
         <div class="input-box" id="interestInputBox">
-          <input class="text-box" id="interestInput" type="number" name="interest-field"  onchange="handleInput('interestInput')" />
+          <input class="text-box" id="interestInput" type="number" name="interest-field" />
           <span class="suffix">%</span>
         </div>
         <p id="interestError" class="error" style="display: none;">Error text</p>
@@ -55,33 +55,49 @@
         <p class="tp-4">Mortgage Type</p>
 
         <div class="radio-input-box">
-          <input type="radio" name="repayment" id="repayment" value="Repayment"/>
+          <input type="radio" name="typeRadioBtn" id="repayment" value="option1"/>
           <label for="repayment">Repayment</label>
         </div>
 
         <div class="radio-input-box">
-          <input type="radio" name="interest" id="interest" value="Interest Only"/>
+          <input type="radio" name="typeRadioBtn" id="interest" value="option2"/>
           <label for="interest">Interest Only</label>
         </div>
       </div>
-
-      <!-- <button class="calculate-btn"> -->
-        <div class="btn-div">
+        <div class="btn-div" id="calcBtn">
           <span class="btn-icon">
             <img src="./assets/images/icon-calculator.svg" alt="calculator icon"/>
           </span>
           <p class="tp-3">Calculate Repayments</p>
         </div>
-
-      <!-- </button> -->
     </div>
   </div>
 
   <div class="results">
-    <div class="title-bar">
-      <img src="./assets/images/illustration-empty.svg" />
-      <p class="tp-2">Results shown here</p>
-      <p class="tp-4">Complete the form and click “calculate repayments” to see what your monthly repayments would be.</p>
+    <div id="resultsEmpty">
+      <div class="title-bar">
+        <img src="./assets/images/illustration-empty.svg" />
+        <p class="tp-2">Results shown here</p>
+        <p class="tp-4">Complete the form and click “calculate repayments” to see what your monthly repayments would be.</p>
+      </div>
+    </div>
+
+    <div id="resultsComplete">
+      <div class="title-bar">
+        <p class="tp-2">Your results</p>
+        <p class="tp-4">Your results are shown below based on the information you provided. To adjust the results, edit the form and click "calculate repayments" again.</p>
+      </div>
+      <div class="payment-results">
+        <div class="monthly-payment">
+          <p class="tp-4">Your monthly repayments</p>
+          <p class="tp-1" id="monthlyPayment"></p>
+        </div>
+        <div class="separator"></div>
+        <div class="total-term-payment">
+          <p class="tp-4">Total you'll repay over the term</p>
+          <p class="tp-2" id="totalPayment"></p>
+        </div>
+      </div>
     </div>
 
     <p class="attribution">
@@ -89,34 +105,6 @@
       Coded by <a href="#">Cassidy McMichael</a>.
     </p>
   </div>
-
-  
-
-  
-
-
-
-  <!-- Empty results start -->
-
-  <!-- Results shown here
-
-  Complete the form and click “calculate repayments” to see what 
-  your monthly repayments would be. -->
-
-  <!-- Empty results end -->
-
-  <!-- Completed results start -->
-
-  <!-- Your results
-
-  Your results are shown below based on the information you provided. 
-  To adjust the results, edit the form and click “calculate repayments” again.
-
-  Your monthly repayments
-
-  Total you'll repay over the term -->
-
-  <!-- Completed results end -->
   
   <script src="./scripts.js"></script>
 </body>
