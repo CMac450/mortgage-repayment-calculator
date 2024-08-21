@@ -21,29 +21,34 @@
       <div class="mortgage-amount">
         <p class="tp-4">Mortgage Amount</p>
 
-        <div class="input-box">
+        <div class="input-box" id="amountInputBox">
           <span class="prefix">£</span>
-          <input class="text-box" type="number" name="amount-field"/>
+          <input class="text-box" id="amountInput" type="number" name="amount-field" onchange="handleInput('amountInput')"/>
         </div>
+        <p id="amountError" class="error" style="display: none;">Error text</p>
 
       </div>
 
       <div class="mortgage-term">
         <p class="tp-4">Mortgage Term</p>
 
-        <div class="input-box"> 
-          <input class="text-box" type="number" name="term-field"/>
+        <div class="input-box" id="termInputBox"> 
+          <input class="text-box" id="termInput" type="number" name="term-field"  onchange="handleInput('termInput')"/>
           <span class="suffix">years</span>
         </div>
+        <p id="termError" class="error" style="display: none;">Error text</p>
+
       </div>
 
       <div class="interest-rate">
         <p class="tp-4">Interest Rate</p>
 
-        <div class="input-box">
-          <input class="text-box" type="number" name="interest-field" />
+        <div class="input-box" id="interestInputBox">
+          <input class="text-box" id="interestInput" type="number" name="interest-field"  onchange="handleInput('interestInput')" />
           <span class="suffix">%</span>
         </div>
+        <p id="interestError" class="error" style="display: none;">Error text</p>
+
       </div>
 
       <div class="mortgage-type">
@@ -72,12 +77,18 @@
     </div>
   </div>
 
+  <div class="results">
+    <div class="title-bar">
+      <img src="./assets/images/illustration-empty.svg" />
+      <p class="tp-2">Results shown here</p>
+      <p class="tp-4">Complete the form and click “calculate repayments” to see what your monthly repayments would be.</p>
+    </div>
 
-
-
-  
-
-  
+    <p class="attribution">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
+      Coded by <a href="#">Cassidy McMichael</a>.
+    </p>
+  </div>
 
   
 
@@ -107,9 +118,6 @@
 
   <!-- Completed results end -->
   
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
+  <script src="./scripts.js"></script>
 </body>
 </html>

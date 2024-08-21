@@ -200,7 +200,7 @@ body {
                 }
             }
 
-            .input-box:invalid {
+            div.invalid, div.invalid:hover {
                 border: 2px solid var(--error-color);
                 opacity: 100%;
 
@@ -209,6 +209,15 @@ body {
                     color: var(--bg-color);
                     background-color: var(--error-color);
                 }
+            }
+
+            p.error {
+                color: var(--error-color);
+                font-size: 14px;
+                line-height: 150%;
+                letter-spacing: 0;
+                font-weight: normal;
+                font-style: normal;
             }
 
             .input-box:active {
@@ -324,9 +333,61 @@ body {
                 border: 1px solid var(--secondary-color-hsl-fifty-percent);
             }
         }
+    }
+
+    div.results {
+        background-color: var(--primary-color-900);
+        height: auto;
+        opacity: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-300);
+        padding: var(--spacing-400) var(--spacing-300);
+
+        div.title-bar{
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-200);
+            align-items: center;
 
 
-    
+            img {
+                height: 192px;
+                width: 192px;
+            }
+
+            
+            p.tp-2 {
+                font-size: 24px;
+                line-height: 125%;
+                font-style: normal;
+                font-weight: bold;
+                color: var(--bg-color);
+                width: 100%;
+                text-align: center;
+                margin: 0;
+            }
+
+            p.tp-4 {
+                font-size: 16px;
+                line-height: 150%;
+                letter-spacing: 0;
+                font-style: normal;
+                color: var(--primary-color-300);
+                height: auto;
+                text-align: center;
+                margin: 0;
+                font-weight:100;
+            }
+
+        }
+
+        p.attribution {
+            font-size: 8px;
+            color: var(--bg-color);
+            text-align: center;
+            margin-bottom: 0;
+        }
     }
 
 }
