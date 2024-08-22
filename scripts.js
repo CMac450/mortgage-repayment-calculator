@@ -16,7 +16,7 @@
 
 document.addEventListener('DOMContentLoaded', function () {
 
-    //set display values for results
+    // Set display values for results
     const resultsCompleteID = document.getElementById('resultsComplete');
     const resultsEmptyID = document.getElementById('resultsEmpty');
 
@@ -29,6 +29,8 @@ document.addEventListener('DOMContentLoaded', function () {
     let interestRate = document.getElementById('interestInput').value;
 
     const formElement = document.getElementById('form');
+
+
 
     // Add event listener to amount input and set error state
     // and message when value is empty
@@ -113,24 +115,42 @@ document.addEventListener('DOMContentLoaded', function () {
     // and call different calculation methods based on the mortgage type selection
     const calcButtonElementID = document.getElementById('calcBtn');
     calcButtonElementID.addEventListener('click', function () {
-        
-        console.log(`form validity: ${formElement.checkValidity()}`);
 
         // Only calculate values and change results pane
         // if the form is valid
-       if (formElement.checkValidity()) {
-        if(isInterestOnlyType) {
-            calculateInterestOnlyRepayment(interestRate, amount, term);
-        }
+        if(!formElement.checkValidity()) {
+            amountErrorElementID.style.display = 'inline';
+            document.getElementById('amountInputBox').classList.add('invalid')
         
-        if(isRepaymentType) {
-            calculateRepayment(interestRate, amount, term);
-        }
+            termErrorElementID.style.display = 'inline';
+            document.getElementById('termInputBox').classList.add('invalid')
+        
+            interestErrorElementID.style.display = 'inline';
+            document.getElementById('interestInputBox').classList.add('invalid')
+        
+        } else {
+            amountErrorElementID.style.display = 'none';
+            document.getElementById('amountInputBox').classList.remove('invalid')
+        
+            termErrorElementID.style.display = 'none';
+            document.getElementById('termInputBox').classList.remove('invalid')
+        
+            interestErrorElementID.style.display = 'none';
+            document.getElementById('interestInputBox').classList.remove('invalid')
+        
+            if(isInterestOnlyType) {
+                calculateInterestOnlyRepayment(interestRate, amount, term);
+            }
+            
+            if(isRepaymentType) {
+                calculateRepayment(interestRate, amount, term);
+            }
 
-        //show results panels
-        resultsEmptyID.style.display = 'none';
-        resultsCompleteID.style.display = 'flex';
-       }
+            //Show results panels
+            resultsEmptyID.style.display = 'none';
+            resultsCompleteID.style.display = 'flex';
+
+        }
 
     });
 
@@ -141,9 +161,19 @@ document.addEventListener('DOMContentLoaded', function () {
         termElementID.value = "";
         interestElementID.value = "";
 
-        //reset results panel
+        // Reset results panel
         resultsEmptyID.style.display = 'flex';
         resultsCompleteID.style.display = 'none';
+
+        // Clear error styling
+        amountErrorElementID.style.display = 'none';
+        document.getElementById('amountInputBox').classList.remove('invalid');
+    
+        termErrorElementID.style.display = 'none';
+        document.getElementById('termInputBox').classList.remove('invalid');
+    
+        interestErrorElementID.style.display = 'none';
+        document.getElementById('interestInputBox').classList.remove('invalid');
     });
 });
 
@@ -154,9 +184,6 @@ calculateInterestOnlyRepayment = (i, a, t) => {
 
     const monthlyPaymentAmount = ((a * annualRate) / 12);
     const repaymentOverTerm = (monthlyPaymentAmount * numMonthsTotal).toFixed(2);
-
-    console.log(`monthlyPaymentAmount1: ${monthlyPaymentAmount}`);
-    console.log(`repaymentOverTerm1: ${repaymentOverTerm}`);
 
     // Format the price above to USD using the locale, style, and currency.
     let USDollar = new Intl.NumberFormat('en-US', {
@@ -181,10 +208,6 @@ calculateRepayment = (i, a, t) => {
 
     const monthlyPaymentAmount = (a * (monthlyRate * (1 + monthlyRate) ** numMonthsTotal) / (((1 + monthlyRate) ** numMonthsTotal) -1));
     const repaymentOverTerm = (monthlyPaymentAmount * numMonthsTotal);
-
-    
-    console.log(`monthlyPaymentAmount2: ${monthlyPaymentAmount}`);
-    console.log(`repaymentOverTerm2: ${repaymentOverTerm}`);
 
     // Format the price above to USD using the locale, style, and currency.
     let USDollar = new Intl.NumberFormat('en-US', {
