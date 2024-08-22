@@ -124,8 +124,13 @@ body {
                 margin: 0;
             }
 
+            a#clearAll {
+                color: var(--primary-color-700);
+            }
+
             a#clearAll:hover {
                 cursor: pointer;
+                color: var(--primary-color-900);
             }
         }
 
@@ -135,6 +140,12 @@ body {
             padding-top: var(--spacing-300);
             padding-bottom: var(--spacing-300);
             gap: var(--spacing-300);
+
+            div.term-interest {
+                display: flex;
+                flex-direction: column;
+                gap: var(--spacing-300);
+            }
 
             div.mortgage-amount, div.mortgage-term, div.interest-rate, div.mortgage-type {
                 display: flex;
@@ -288,7 +299,7 @@ body {
                 justify-content: center;
                 background-color: var(--secondary-color);
                 color: var(--primary-color-900);
-                border: 1px solid var(--secondary-color);
+                /* border: 1px solid var(--secondary-color); */
                 border-radius: 999px;
                 height: auto;
                 width: 100%;
@@ -301,7 +312,7 @@ body {
             div.btn-div:hover {
                 cursor: pointer;
                 background-color: var(--secondary-color-hsl-fifty-percent);
-                border: 1px solid var(--secondary-color-hsl-fifty-percent);
+                /* border: 1px solid var(--secondary-color-hsl-fifty-percent); */
             }
         }
     }
@@ -465,3 +476,54 @@ body {
 }
 
 
+/*tablet layout*/
+@media screen and (min-width: 600px) {
+    #form {
+        div.form-title-bar {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 100%;
+        }
+    }
+
+
+    div.term-interest {
+        display: flex !important;
+        flex-direction: row !important;
+        gap: var(--spacing-300) !important;
+
+        div.mortgage-term, div.interest-rate {
+            div.input-box {
+                span.suffix {
+                    align-content: center !important;
+                }
+            }
+        }
+    }
+
+    div.btn-div {
+        gap: var(--spacing-300) !important;
+        /* padding: 0 var(--spacing-500) !important; */
+        width: 50% !important;
+    }
+
+    div#resultsComplete {
+        gap: var(--spacing-500) !important;
+
+        div.payment-results {
+            padding: var(--spacing-400) !important;
+
+            div.monthly-payment {
+                p#monthlyPayment {
+                    font-size: 56px !important;
+                    line-height: 125% !important;
+                }
+            }
+
+            div.separator {
+                margin: var(--spacing-400) 0 !important;
+            }
+        }
+    }
+}

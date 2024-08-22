@@ -29,26 +29,28 @@
 
       </div>
 
-      <div class="mortgage-term">
-        <p class="tp-4">Mortgage Term</p>
-
-        <div class="input-box" id="termInputBox"> 
-          <input class="text-box" id="termInput" type="number" name="term-field" required/>
-          <span class="suffix">years</span>
+      <div class="term-interest">
+        <div class="mortgage-term">
+          <p class="tp-4">Mortgage Term</p>
+  
+          <div class="input-box" id="termInputBox"> 
+            <input class="text-box" id="termInput" type="number" name="term-field" required/>
+            <span class="suffix">years</span>
+          </div>
+          <p id="termError" class="error" style="display: none;">Mortgage Term is required.</p>
+  
         </div>
-        <p id="termError" class="error" style="display: none;">Mortgage Term is required.</p>
-
-      </div>
-
-      <div class="interest-rate">
-        <p class="tp-4">Interest Rate</p>
-
-        <div class="input-box" id="interestInputBox">
-          <input class="text-box" id="interestInput" type="number" step="0.01" name="interest-field" required/>
-          <span class="suffix">%</span>
+  
+        <div class="interest-rate">
+          <p class="tp-4">Interest Rate</p>
+  
+          <div class="input-box" id="interestInputBox">
+            <input class="text-box" id="interestInput" type="number" step="0.01" name="interest-field" required/>
+            <span class="suffix">%</span>
+          </div>
+          <p id="interestError" class="error" style="display: none;">Interest Rate is required.</p>
+  
         </div>
-        <p id="interestError" class="error" style="display: none;">Interest Rate is required.</p>
-
       </div>
 
       <div class="mortgage-type">
