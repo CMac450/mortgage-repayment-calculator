@@ -268,27 +268,34 @@ body {
 
                     }
 
-                    input:active, input:focus-within {
-                        accent-color: var(--secondary-color);
-                    }
-
                     label {
                         color: var(--primary-color-900);
                         font-weight: bold;
                         font-size: 18px;
                         line-height: 125%;
                         letter-spacing: 0;
+                        width: 100%;
                     }
                 }
 
-                .radio-input-box:active, .radio-input-box:focus-visible, div.radio-input-box:focus-within {
+                /* change div bg and border, and radio button accent color on focus-within*/
+                div.radio-input-box:focus-within {
                     border: 2px solid var(--secondary-color);
                     background-color: var(--secondary-color-hsl);
                     color: var(--primary-color-900);
                 }
 
-                .radio-input-box:hover {
+                div.radio-input-box:focus-within input {
+                   accent-color: var(--secondary-color) !important;
+                }
+
+                div.radio-input-box:hover {
                     border: 2px solid var(--secondary-color);
+                    cursor: pointer;
+
+                    input:hover, label:hover {
+                        cursor: pointer;
+                    }
                 }
     
             }
@@ -299,7 +306,6 @@ body {
                 justify-content: center;
                 background-color: var(--secondary-color);
                 color: var(--primary-color-900);
-                /* border: 1px solid var(--secondary-color); */
                 border-radius: 999px;
                 height: auto;
                 width: 100%;
@@ -312,7 +318,6 @@ body {
             div.btn-div:hover {
                 cursor: pointer;
                 background-color: var(--secondary-color-hsl-fifty-percent);
-                /* border: 1px solid var(--secondary-color-hsl-fifty-percent); */
             }
         }
     }
@@ -504,7 +509,6 @@ body {
 
     div.btn-div {
         gap: var(--spacing-300) !important;
-        /* padding: 0 var(--spacing-500) !important; */
         width: 50% !important;
     }
 
