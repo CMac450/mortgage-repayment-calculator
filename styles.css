@@ -391,8 +391,7 @@ body {
                 gap: var(--spacing-200);
                 align-items: left;
                 border-radius: 8px;
-                border-top-color: var(--secondary-color);
-                border-top-width: 4px;
+                border-top: 4px solid var(--secondary-color);
                 background-color: hsla(0, 0%, 0%, .25);
                 padding: var(--spacing-300) var(--spacing-200);
 
