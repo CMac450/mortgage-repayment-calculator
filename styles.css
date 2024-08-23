@@ -533,3 +533,21 @@ body {
         }
     }
 }
+
+/*laptop layout*/
+@media screen and (min-width: 1000px) {
+    body{
+        display: flex !important;
+        flex-direction: row !important;
+    }
+
+    div.btn-div {
+        gap: var(--spacing-300) !important;
+        padding: 0 var(--spacing-500);
+        width: 60% !important;
+    }
+
+    div.results {
+        border-bottom-left-radius: 80px;
+    }
+}

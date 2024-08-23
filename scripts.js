@@ -1,18 +1,4 @@
-// setCurrency = (string location)  => {
-//     switch (currency) {
-//         case "United States" :
-//         return "$"
-//         break;
-
-//         case "United Kingdom" :
-//         return "£"
-//         break;
-//     }
-// }
-
-// setCurrency = (bool useAmericanCurrency)  => {
-//     return useAmericanCurrency ? "$" : "£";
-// }
+// TODO: Pass 'e' into functions and replace variable.value with e.target.value
 
 document.addEventListener('DOMContentLoaded', function () {
 
