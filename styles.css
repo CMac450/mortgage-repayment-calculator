@@ -501,6 +501,8 @@ body {
         gap: var(--spacing-300) !important;
 
         div.mortgage-term, div.interest-rate {
+            width: 50%;
+            
             div.input-box {
                 span.suffix {
                     align-content: center !important;
@@ -531,6 +533,10 @@ body {
                 margin: var(--spacing-400) 0 !important;
             }
         }
+    }
+
+    div#resultsEmpty {
+        align-self: center !important;
     }
 }
 
